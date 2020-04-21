@@ -14,7 +14,8 @@ sudo virt-install --name=server1 \
     --network=default \
     --network=network:internal \
     --location /var/lib/libvirt/images/CentOS-Stream-x86_64-dvd1.iso \
-    --extra-args "ks=http://192.168.1.254:8000/server1-ks.cfg" &
+    --extra-args "ks=http://192.168.1.254:8000/server1-ks.cfg" \
+    --unattended &
 
 sudo virt-install --name=server2 \
     --vcpus=1 \
@@ -28,7 +29,8 @@ sudo virt-install --name=server2 \
     --os-variant=centos8 \
     --network=network:internal \
     --location /var/lib/libvirt/images/CentOS-Stream-x86_64-dvd1.iso \
-    --extra-args "ks=http://192.168.1.254:8000/server2-ks.cfg" &
+    --extra-args "ks=http://192.168.1.254:8000/server2-ks.cfg" \
+    --unattended &
 
 sudo virt-install --name=client \
     --vcpus=1 \
@@ -38,7 +40,8 @@ sudo virt-install --name=client \
     --os-variant=centos8 \
     --network=network:internal \
     --location /var/lib/libvirt/images/CentOS-Stream-x86_64-dvd1.iso \
-    --extra-args "ks=http://192.168.1.254:8000/client-ks.cfg" &
+    --extra-args "ks=http://192.168.1.254:8000/client-ks.cfg" \
+    --unattended &
 
-sleep 3m
+sleep 60
 kill $(ps -ef | grep -m1 "python -m http.server" | awk '{print $2}')

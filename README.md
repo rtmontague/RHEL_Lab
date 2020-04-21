@@ -1,11 +1,5 @@
 # RHEL Lab
 
-## Install Dependencies
-```
-$ sudo dnf install pkg-config libvirt-dev
-$ pip3 install libvirt-python
-```
-
 ## Usage
 ### Create Internal network and base VMs
 
